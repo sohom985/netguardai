@@ -1,0 +1,19 @@
+# docker-compose.yml
+# Easy deployment with: docker-compose up
+
+services:
+  netguardai:
+    build: .
+    container_name: netguardai
+    ports:
+      - "8501:8501"  # Streamlit dashboard
+    # Required for packet capture inside container
+    cap_add:
+      - NET_RAW
+      - NET_ADMIN
+    environment:
+      - TZ=Europe/Berlin  # Match your Mac's timezone
+    volumes:
+      - ./netguard.db:/app/netguard.db  # Persist database
+      - /etc/localtime:/etc/localtime:ro  # Sync timezone with host
+    restart: unless-stopped

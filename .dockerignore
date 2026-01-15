@@ -1,0 +1,40 @@
+# .dockerignore
+# Files to exclude from Docker build
+
+# Virtual environments
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# IDE
+.vscode/
+.idea/
+
+# Git
+.git/
+.gitignore
+
+# Database (will be created fresh in container)
+*.db
+
+# Docs (except README)
+*.md
+!README.md
+
+# Large datasets (not needed for runtime)
+datasets/
+
+# Test files
+test_*.py
+
+# Training scripts (not needed for runtime)
+train_*.py
+download_*.py
+
+# Output files
+output.txt
+*.png
+
+# Extra trained models (keep only the main one)
+trained_model_*.pkl
